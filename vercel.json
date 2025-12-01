@@ -1,11 +1,13 @@
 {
-  "buildCommand": "pnpm build",
+  "buildCommand": "pnpm install --frozen-lockfile && pnpm build",
   "devCommand": "pnpm dev",
-  "installCommand": "pnpm install",
+  "installCommand": "pnpm install --frozen-lockfile",
   "framework": "vite",
   "outputDirectory": "dist",
   "env": {
     "NODE_ENV": "production",
-    "VITE_APP_ID": "websitekua"
+    "VITE_APP_ID": "websitekua",
+    "PNPM_HOME": "/pnpm",
+    "PATH": "$PNPM_HOME:$PATH"
   }
 }
