@@ -1,0 +1,29 @@
+version: '3.8'
+
+services:
+  app:
+    build: .
+    ports:
+      - "3000:3000"
+    environment:
+      NODE_ENV: production
+      VITE_APP_ID: websitekua
+      DATABASE_URL: mysql://websitekua_user:websitekua_password@db:3306/websitekua
+      JWT_SECRET: kua-pecalungan-secret-key-2024
+    depends_on:
+      - db
+    restart: unless-stopped
+
+  db:
+    image: mysql:8.0
+    environment:
+      MYSQL_ROOT_PASSWORD: root_password
+      MYSQL_DATABASE: websitekua
+      MYSQL_USER: websitekua_user
+      MYSQL_PASSWORD: websitekua_password
+    volumes:
+      - mysql_data:/var/lib/mysql
+    restart: unless-stopped
+
+volumes:
+  mysql_data:
