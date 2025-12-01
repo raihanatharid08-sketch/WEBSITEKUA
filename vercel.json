@@ -6,21 +6,5 @@
   "env": {
     "NODE_ENV": "production",
     "VITE_APP_ID": "websitekua"
-  },
-  "functions": {
-    "server/**/*.ts": {
-      "runtime": "nodejs20.x",
-      "memory": 1024
-    }
-  },
-  "routes": [
-    {
-      "src": "/api/(.*)",
-      "dest": "/dist/index.js"
-    },
-    {
-      "src": "/(.*)",
-      "dest": "/dist/index.html"
-    }
-  ]
+  }
 }
