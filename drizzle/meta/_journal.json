@@ -1,0 +1,41 @@
+{
+  "version": "7",
+  "dialect": "mysql",
+  "entries": [
+    {
+      "idx": 0,
+      "version": "5",
+      "when": 1764060320452,
+      "tag": "0000_spooky_darkstar",
+      "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "5",
+      "when": 1764060372360,
+      "tag": "0001_slow_mac_gargan",
+      "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "5",
+      "when": 1764061144304,
+      "tag": "0002_orange_bullseye",
+      "breakpoints": true
+    },
+    {
+      "idx": 3,
+      "version": "5",
+      "when": 1764080860710,
+      "tag": "0003_sharp_the_hood",
+      "breakpoints": true
+    },
+    {
+      "idx": 4,
+      "version": "5",
+      "when": 1764310895575,
+      "tag": "0004_legal_wraith",
+      "breakpoints": true
+    }
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "buildCommand": "pnpm build",
+  "devCommand": "pnpm dev",
+  "installCommand": "pnpm install",
+  "framework": "vite",
+  "outputDirectory": "dist",
+  "env": {
+    "NODE_ENV": "production",
+    "DATABASE_URL": "@database_url",
+    "JWT_SECRET": "@jwt_secret",
+    "VITE_APP_ID": "websitekua"
+  },
+  "functions": {
+    "server/_core/index.ts": {
+      "runtime": "nodejs20.x"
+    }
+  }
+}
