@@ -1,0 +1,12 @@
+{
+  "name": "websitekua",
+  "description": "WebsiteKUA - Full Stack Application",
+  "builder": "dockerfile",
+  "buildCommand": "pnpm install && pnpm build",
+  "startCommand": "pnpm start",
+  "port": 3000,
+  "env": {
+    "NODE_ENV": "production",
+    "VITE_APP_ID": "websitekua"
+  }
+}
