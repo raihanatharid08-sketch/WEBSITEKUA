@@ -263,6 +263,42 @@ export const appRouter = router({
   }),
 
   questions: router({
+    // Public endpoint untuk melihat pertanyaan yang sudah dijawab
+    listPublished: publicProcedure
+      .input(z.object({
+        categoryId: z.number().optional(),
+      }).optional())
+      .query(async ({ input }) => {
+        // Public users only see answered and published questions
+        return await getAllQuestions({
+          ...input,
+          isAnswered: true,
+        });
+      }),
+
+    getPublished: publicProcedure
+      .input(z.object({ id: z.number() }))
+      .query(async ({ input }) => {
+        const question = await getQuestionById(input.id);
+        if (!question) {
+          throw new TRPCError({ code: 'NOT_FOUND', message: 'Question not found' });
+        }
+        
+        // Only show published and answered questions to public
+        if (!question.isAnswered || !question.isPublished) {
+          throw new TRPCError({ code: 'NOT_FOUND', message: 'Question not found' });
+        }
+        
+        const answers = await getAnswersByQuestionId(input.id);
+        const category = await getCategoryById(question.categoryId);
+        
+        return {
+          ...question,
+          answers,
+          category,
+        };
+      }),
+
     submit: protectedProcedure
       .input(z.object({
         name: z.string().min(1, "Nama harus diisi"),

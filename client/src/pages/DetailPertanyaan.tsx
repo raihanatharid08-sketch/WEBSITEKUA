@@ -16,7 +16,7 @@ export default function DetailPertanyaan() {
   const questionId = parseInt(params.id || "0");
   const { user } = useAuth();
 
-  const { data: questionData, isLoading, error } = trpc.questions.getById.useQuery(
+  const { data: questionData, isLoading, error } = trpc.questions.getPublished.useQuery(
     { id: questionId },
     { enabled: questionId > 0 }
   );

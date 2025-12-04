@@ -21,54 +21,29 @@ import UserLogin from "./pages/UserLogin";
 import ProtectedRoute from "./components/ProtectedRoute";
 
 function Router() {
-  // make sure to consider if you need authentication for certain routes
+  // Public routes - dapat diakses tanpa login
+  // Protected routes - memerlukan login (bookmark, ajukan pertanyaan, testimoni)
   return (
     <Switch>
+      {/* Auth routes */}
       <Route path={"/login"} component={UserLogin} />
       <Route path={"/admin/login"} component={AdminLogin} />
-      <Route path={"/"}>
-        <ProtectedRoute>
-          <Home />
-        </ProtectedRoute>
-      </Route>
-      <Route path="/materi-fiqih">
-        <ProtectedRoute>
-          <MateriFiqih />
-        </ProtectedRoute>
-      </Route>
-      <Route path="/materi">
-        <ProtectedRoute>
-          <MateriFiqih />
-        </ProtectedRoute>
-      </Route>
-      <Route path="/materi/:id">
-        <ProtectedRoute>
-          <DetailMateri />
-        </ProtectedRoute>
-      </Route>
+      
+      {/* Public routes - bisa diakses tanpa login */}
+      <Route path={"/"} component={Home} />
+      <Route path="/materi-fiqih" component={MateriFiqih} />
+      <Route path="/materi" component={MateriFiqih} />
+      <Route path="/materi/:id" component={DetailMateri} />
+      <Route path="/tanya-jawab" component={TanyaJawab} />
+      <Route path="/pertanyaan/:id" component={DetailPertanyaan} />
+      <Route path="/lokasi" component={Lokasi} />
+      
+      {/* Protected routes - memerlukan login */}
       <Route path="/ajukan-pertanyaan">
         <ProtectedRoute>
           <AjukanPertanyaan />
         </ProtectedRoute>
       </Route>
-      <Route path="/tanya-jawab">
-        <ProtectedRoute>
-          <TanyaJawab />
-        </ProtectedRoute>
-      </Route>
-      <Route path="/pertanyaan/:id">
-        <ProtectedRoute>
-          <DetailPertanyaan />
-        </ProtectedRoute>
-      </Route>
-      <Route path="/lokasi">
-        <ProtectedRoute>
-          <Lokasi />
-        </ProtectedRoute>
-      </Route>
-      <Route path="/admin" component={AdminDashboard} />
-      <Route path="/admin/settings" component={AdminSettings} />
-      <Route path="/admin/users" component={AdminUsers} />
       <Route path={"/bookmarks"}>
         <ProtectedRoute>
           <Bookmarks />
@@ -79,8 +54,14 @@ function Router() {
           <BeriTestimoni />
         </ProtectedRoute>
       </Route>
+      
+      {/* Admin routes */}
+      <Route path="/admin" component={AdminDashboard} />
+      <Route path="/admin/settings" component={AdminSettings} />
+      <Route path="/admin/users" component={AdminUsers} />
+      
+      {/* 404 */}
       <Route path={"/404"} component={NotFound} />
-      {/* Final fallback route */}
       <Route component={NotFound} />
     </Switch>
   );
