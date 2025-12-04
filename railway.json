@@ -1,12 +1,12 @@
 {
-  "name": "websitekua",
-  "description": "WebsiteKUA - Full Stack Application",
-  "builder": "dockerfile",
-  "buildCommand": "pnpm install --no-frozen-lockfile && pnpm build",
-  "startCommand": "pnpm start",
-  "port": 3000,
-  "env": {
-    "NODE_ENV": "production",
-    "VITE_APP_ID": "websitekua"
+  "$schema": "https://railway.app/railway.schema.json",
+  "build": {
+    "builder": "NIXPACKS",
+    "buildCommand": "pnpm install --no-frozen-lockfile && pnpm build"
+  },
+  "deploy": {
+    "startCommand": "pnpm start",
+    "restartPolicyType": "ON_FAILURE",
+    "restartPolicyMaxRetries": 10
   }
 }
