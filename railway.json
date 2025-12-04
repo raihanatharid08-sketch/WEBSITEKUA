@@ -2,7 +2,7 @@
   "name": "websitekua",
   "description": "WebsiteKUA - Full Stack Application",
   "builder": "dockerfile",
-  "buildCommand": "pnpm install && pnpm build",
+  "buildCommand": "pnpm install --no-frozen-lockfile && pnpm build",
   "startCommand": "pnpm start",
   "port": 3000,
   "env": {
