@@ -1,10 +1,11 @@
 [build]
-command = "pnpm install && pnpm build"
+command = "pnpm install --no-frozen-lockfile && pnpm build"
 publish = "dist"
 functions = "netlify/functions"
 
 [build.environment]
-NODE_VERSION = "20"
+NODE_VERSION = "22"
+PNPM_VERSION = "10.4.1"
 NPM_FLAGS = "--legacy-peer-deps"
 
 [[redirects]]
@@ -18,10 +19,10 @@ to = "/.netlify/functions/:splat"
 status = 200
 
 [context.production]
-command = "pnpm install && pnpm build"
+command = "pnpm install --no-frozen-lockfile && pnpm build"
 
 [context.deploy-preview]
-command = "pnpm install && pnpm build"
+command = "pnpm install --no-frozen-lockfile && pnpm build"
 
 [context.branch-deploy]
-command = "pnpm install && pnpm build"
+command = "pnpm install --no-frozen-lockfile && pnpm build"
