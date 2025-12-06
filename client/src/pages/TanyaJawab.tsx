@@ -34,7 +34,7 @@ export default function TanyaJawab() {
     return filters;
   }, [selectedCategory, filterAnswered]);
 
-  const { data: questions, isLoading } = trpc.questions.listPublished.useQuery(queryFilters);
+  const { data: questions, isLoading } = trpc.questions.list.useQuery(queryFilters);
 
   // Filter questions by search query
   const filteredQuestions = useMemo(() => {
